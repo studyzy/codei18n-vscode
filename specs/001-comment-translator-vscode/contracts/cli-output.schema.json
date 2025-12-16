@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CodeI18n Scan Output",
+  "description": "Output format of 'codei18n scan --format json --with-translations'",
+  "type": "object",
+  "properties": {
+    "file": {
+      "type": "string",
+      "description": "Relative path of the scanned file"
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "SHA1 hash ID of the comment"
+          },
+          "range": {
+            "type": "object",
+            "properties": {
+              "startLine": { "type": "integer", "minimum": 1 },
+              "startCol": { "type": "integer", "minimum": 1 },
+              "endLine": { "type": "integer", "minimum": 1 },
+              "endCol": { "type": "integer", "minimum": 1 }
+            },
+            "required": ["startLine", "startCol", "endLine", "endCol"]
+          },
+          "sourceText": {
+            "type": "string",
+            "description": "Original English comment text"
+          },
+          "localizedText": {
+            "type": "string",
+            "description": "Translated text (optional)"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["line", "block", "doc"]
+          }
+        },
+        "required": ["id", "range", "sourceText", "type"]
+      }
+    }
+  },
+  "required": ["file", "comments"]
+}
