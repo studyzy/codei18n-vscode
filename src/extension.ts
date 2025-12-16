@@ -21,15 +21,27 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Core update logic
     const update = async (editor: vscode.TextEditor | undefined) => {
-        if (!editor || editor.document.languageId !== 'go') {
+        if (!editor) {
+            console.log('[CodeI18n] No active editor');
+            return;
+        }
+        if (editor.document.languageId !== 'go') {
+            console.log(`[CodeI18n] Skipping non-go file: ${editor.document.languageId}`);
             return;
         }
         
-        // Scan
-        const comments = await commentService.getComments(editor.document);
+        console.log(`[CodeI18n] Processing file: ${editor.document.fileName}`);
         
-        // Decorate
-        decorator.updateDecorations(editor, comments);
+        try {
+            // Scan
+            const comments = await commentService.getComments(editor.document);
+            console.log(`[CodeI18n] Got ${comments.length} comments from CLI`);
+            
+            // Decorate
+            decorator.updateDecorations(editor, comments);
+        } catch (error) {
+            console.error('[CodeI18n] Error during update:', error);
+        }
     };
 
     // Events

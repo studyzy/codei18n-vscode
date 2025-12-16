@@ -1,0 +1,13 @@
+.vscode
+.idea
+.git
+node_modules
+src
+specs
+*.ts
+!*.d.ts
+tsconfig.json
+Makefile
+.codebuddy
+.specify
+.github

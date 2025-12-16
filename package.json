@@ -1,0 +1,63 @@
+{
+  "name": "codei18n-vscode",
+  "displayName": "CodeI18n VSCode Extension",
+  "description": "VSCode extension for CodeI18n, enabling real-time translation of source code comments",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:go"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codei18n.toggleTranslation",
+        "title": "CodeI18n: Toggle Translation"
+      }
+    ],
+    "configuration": {
+      "title": "CodeI18n",
+      "properties": {
+        "codei18n.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable the extension."
+        },
+        "codei18n.cliPath": {
+          "type": "string",
+          "default": "codei18n",
+          "description": "Path to the codei18n executable (absolute path recommended if not in PATH)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^1.6.1",
+    "sinon": "^17.0.1",
+    "@types/sinon": "^17.0.1",
+    "@types/glob": "^8.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/studyzy/codei18n-vscode"
+  },
+  "license": "MIT"
+}

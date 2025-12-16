@@ -12,13 +12,20 @@ export class CommentService {
 
     public async getComments(document: vscode.TextDocument): Promise<Comment[]> {
         if (document.languageId !== 'go') {
+            console.log(`[CodeI18n] CommentService: Skipping non-go file`);
             return [];
         }
 
         try {
+            console.log(`[CodeI18n] CommentService: Scanning ${document.fileName}`);
             // Using relative path for CLI might be better if CLI expects it,
             // or absolute path. Let's send what document.fileName provides.
             const output = await this.cliWrapper.scan(document.fileName, document.getText());
+            
+            console.log(`[CodeI18n] CommentService: Got ${output.comments.length} comments`);
+            // 打印有翻译的注释数量
+            const withTranslation = output.comments.filter(c => c.localizedText).length;
+            console.log(`[CodeI18n] CommentService: ${withTranslation} comments have localizedText`);
             
             this.cache.set(document.uri.toString(), output.comments);
             return output.comments;
