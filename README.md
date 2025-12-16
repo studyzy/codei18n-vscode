@@ -1,47 +1,74 @@
-# CodeI18n VSCode Extension
+# CodeI18n VSCode 扩展
 
-VSCode extension for [CodeI18n](https://github.com/studyzy/codei18n), enabling real-time translation of source code comments.
+[CodeI18n](https://github.com/studyzy/codei18n) 的 VSCode 扩展，实现源代码注释的实时翻译。
 
-## Features
+## 功能特性
 
-- **Auto Translation**: Automatically translates English comments to your native language (e.g., Chinese) in real-time.
-- **Non-Destructive**: Visual replacement only; source files are never modified.
-- **Hover to View Original**: Hover over translated comments to see the original English text.
+- **自动翻译**：实时将英文注释自动翻译为你的母语（例如中文）。
+- **无损模式**：仅进行视觉替换；源文件内容永远不会被修改。
+- **悬停查看原文**：将鼠标悬停在已翻译的注释上即可查看原始英文文本。
 
-## Requirements
+## 环境要求
 
-You must have the `codei18n` CLI tool installed and available on your system.
+你必须在系统上安装并配置好 `codei18n` CLI 工具。
 
-### Installing CodeI18n CLI
+### 安装 CodeI18n CLI
 
 ```bash
 go install github.com/studyzy/codei18n/cmd/codei18n@latest
 ```
 
-Ensure `codei18n` is in your system PATH.
+确保 `codei18n` 已添加到系统的 PATH 环境变量中。
 
-## Configuration
+## 配置项
 
-| Setting | Default | Description |
+| 设置项 | 默认值 | 描述 |
 |---------|---------|-------------|
-| `codei18n.enable` | `true` | Enable/Disable the extension. |
-| `codei18n.cliPath` | `codei18n` | Path to the `codei18n` executable (absolute path recommended if not in PATH). |
+| `codei18n.enable` | `true` | 启用/禁用扩展。 |
+| `codei18n.cliPath` | `codei18n` | `codei18n` 可执行文件的路径（如果不在 PATH 中，建议使用绝对路径）。 |
 
-## Usage
+## 使用方法
 
-1. Open any Go (`.go`) file.
-2. Comments will be automatically translated.
-3. Hover over a translation to view the original text.
+1. 打开任何 Go (`.go`) 文件。
+2. 注释将被自动翻译。
+3. 将鼠标悬停在翻译后的文本上以查看原文。
 
-## Commands
+## 命令
 
-- `CodeI18n: Toggle Translation`: Quickly enable/disable translation.
+- `CodeI18n: Toggle Translation`: 快速启用/禁用翻译功能。
 
-## Troubleshooting
+## 故障排除
 
-- **Error: codei18n process exited**: This usually means the CLI tool is not found or crashed. Check your `codei18n.cliPath` setting.
-- **No translations**: Ensure your `codei18n` configuration (mappings) is set up correctly in the project root (`.codei18n/`).
+- **Error: codei18n process exited**: 这通常意味着 CLI 工具未找到或崩溃。请检查你的 `codei18n.cliPath` 设置。
+- **No translations**: 确保你的项目根目录下的 `codei18n` 配置（映射）已正确设置（`.codei18n/`）。
 
-## License
+## 开发指南
+
+### 前置条件
+- Node.js & npm
+- [codei18n](https://github.com/studyzy/codei18n) CLI
+
+### 项目设置
+```bash
+git clone https://github.com/studyzy/codei18n-vscode.git
+cd codei18n-vscode
+npm install
+```
+
+### 构建与测试
+为了方便起见，你可以使用提供的 `Makefile`：
+
+```bash
+make compile   # 编译 TypeScript
+make test      # 运行测试
+make package   # 创建 .vsix 安装包
+```
+
+### 项目结构
+- `src/services/cliWrapper.ts`: 与 `codei18n` 二进制文件交互。
+- `src/decoration/`: 处理编辑器中的视觉文本替换。
+- `src/hover/`: 提供悬停时的原文显示。
+
+## 许可证
 
 MIT
