@@ -22,14 +22,14 @@ description: "功能实现任务列表模板"
 
 **目的**: 项目初始化、构建工具链和 CI/CD 环境。
 
-- [ ] T001 初始化 VSCode 扩展项目结构 (src, .vscode, tsconfig.json)
-- [ ] T002 配置 `package.json`
+- [x] T001 初始化 VSCode 扩展项目结构 (src, .vscode, tsconfig.json)
+- [x] T002 配置 `package.json`
     - 添加 `activationEvents`: `["onLanguage:go"]`
     - 添加 `contributes.configuration`: `codei18n.cliPath`, `codei18n.enable`
-- [ ] T003 [P] 安装开发依赖 (`mocha`, `@types/vscode`, `@types/node`, `typescript`, `eslint`)
-- [ ] T004 创建 `Makefile`
+- [x] T003 [P] 安装开发依赖 (`mocha`, `@types/vscode`, `@types/node`, `typescript`, `eslint`)
+- [x] T004 创建 `Makefile`
     - 包含目标: `install` (npm install), `compile` (tsc), `test` (run tests), `package` (vsce package)
-- [ ] T005 创建 GitHub Action CI 工作流 `.github/workflows/ci.yml`
+- [x] T005 创建 GitHub Action CI 工作流 `.github/workflows/ci.yml`
     - 在 Ubuntu/macOS/Windows 上运行测试
     - 运行 Lint 检查
 
@@ -41,14 +41,14 @@ description: "功能实现任务列表模板"
 
 **⚠️ 关键**: 必须在 UI 逻辑之前完成。
 
-- [ ] T006 [P] 创建 `src/configuration/configManager.ts`
+- [x] T006 [P] 创建 `src/configuration/configManager.ts`
     - 实现配置读取 (CLI 路径, 启用状态)
     - 监听配置变更事件
-- [ ] T007 创建 `src/services/cliWrapper.ts`
+- [x] T007 创建 `src/services/cliWrapper.ts`
     - 实现 `spawn` 调用 `codei18n`
     - 实现 `scan(filePath, content)` 方法
     - 处理 JSON 解析与错误捕获
-- [ ] T008 [P] 为 `cliWrapper.ts` 编写单元测试 (`src/test/suite/cliWrapper.test.ts`)
+- [x] T008 [P] 为 `cliWrapper.ts` 编写单元测试 (`src/test/suite/cliWrapper.test.ts`)
     - Mock `child_process` 验证参数传递和输出解析
 
 **检查点**: CLI 调用层已就绪，可以通过单元测试验证与 `codei18n` 的通信。
@@ -65,19 +65,19 @@ description: "功能实现任务列表模板"
 
 ### 用户故事 1 的实施
 
-- [ ] T009 [US1] 创建 `src/decoration/decorationTypes.ts`
+- [x] T009 [US1] 创建 `src/decoration/decorationTypes.ts`
     - 定义 `translationDecorationType` (设置 `after` 属性样式, 透明度, 颜色)
-- [ ] T010 [US1] 创建 `src/services/commentService.ts`
+- [x] T010 [US1] 创建 `src/services/commentService.ts`
     - 封装 `CliWrapper`，提供 `getComments(document)` 方法
     - 负责缓存或防抖逻辑 (可选)
-- [ ] T011 [US1] 创建 `src/decoration/decorator.ts`
+- [x] T011 [US1] 创建 `src/decoration/decorator.ts`
     - 实现 `updateDecorations(editor, comments)`
     - 将 `Comment` 对象转换为 `vscode.DecorationOptions` (设置 `renderOptions.after.contentText`)
-- [ ] T012 [US1] 在 `src/extension.ts` 中集成核心逻辑
+- [x] T012 [US1] 在 `src/extension.ts` 中集成核心逻辑
     - 注册 `activeTextEditor` 监听器
     - 注册 `onDidChangeTextDocument` 监听器 (配合防抖)
     - 实现主入口 `activate` 函数
-- [ ] T013 [P] [US1] 添加防抖工具函数 `src/utils/debounce.ts` 并应用到事件监听
+- [x] T013 [P] [US1] 添加防抖工具函数 `src/utils/debounce.ts` 并应用到事件监听
 
 **检查点**: 打开 Go 文件应能看到翻译效果。
 
@@ -92,11 +92,11 @@ description: "功能实现任务列表模板"
 
 ### 用户故事 2 的实施
 
-- [ ] T014 [US2] 创建 `src/hover/translationHoverProvider.ts`
+- [x] T014 [US2] 创建 `src/hover/translationHoverProvider.ts`
     - 实现 `vscode.HoverProvider` 接口
     - `provideHover` 方法：根据光标位置查找对应的 `Comment` 对象
     - 返回包含 `sourceText` 的 MarkdownString
-- [ ] T015 [US2] 在 `src/extension.ts` 中注册 Hover Provider
+- [x] T015 [US2] 在 `src/extension.ts` 中注册 Hover Provider
     - `vscode.languages.registerHoverProvider('go', ...)`
 
 **检查点**: 悬停功能正常工作。
@@ -107,12 +107,12 @@ description: "功能实现任务列表模板"
 
 **目的**: 错误处理、文档和打包。
 
-- [ ] T016 优化错误处理
+- [x] T016 优化错误处理
     - 当 `codei18n` 命令未找到时，显示一次性错误提示并提供设置跳转按钮
-- [ ] T017 [P] 更新 `README.md`
+- [x] T017 [P] 更新 `README.md`
     - 添加安装指南 (需安装 `codei18n` CLI)
     - 添加配置说明
-- [ ] T018 运行完整构建与测试 (`make test`)
+- [x] T018 运行完整构建与测试 (`make test`)
 
 ---
 
