@@ -9,6 +9,13 @@ export class Decorator {
         letterSpacing: '-1000px', // 将字母间距设为极大的负值，压缩文本到几乎不可见
     });
 
+    /**
+     * Applies decorations to the editor to display translated comments.
+     * Hides the original comment text and displays the translation in its place.
+     * 
+     * @param editor - The text editor to apply decorations to
+     * @param comments - List of comments with translations
+     */
     public updateDecorations(editor: vscode.TextEditor, comments: Comment[]) {
         console.log(`[CodeI18n] Updating decorations for ${comments.length} comments`);
         
@@ -49,6 +56,11 @@ export class Decorator {
         editor.setDecorations(this.translationDecorationType, decorations);
     }
 
+    /**
+     * Clears all translation decorations from the editor.
+     * 
+     * @param editor - The text editor to clear decorations from
+     */
     public clearDecorations(editor: vscode.TextEditor) {
         editor.setDecorations(this.translationDecorationType, []);
     }

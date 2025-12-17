@@ -2,7 +2,7 @@
   "name": "codei18n-vscode",
   "displayName": "CodeI18n VSCode Extension",
   "description": "VSCode extension for CodeI18n, enabling real-time translation of source code comments",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:go"
+    "onLanguage:go",
+    "onLanguage:rust"
   ],
   "main": "./out/extension.js",
   "contributes": {

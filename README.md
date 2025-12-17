@@ -8,6 +8,15 @@ VSCode extension for [CodeI18n](https://github.com/studyzy/codei18n), enabling r
 - **Non-Destructive**: Visual replacement only; source files are never modified.
 - **Hover to View Original**: Hover over translated comments to see the original English text.
 
+## Supported Languages
+
+- **Go**: Full support for line comments (`//`) and block comments (`/* */`).
+- **Rust**: v0.2.0+ support, including:
+  - Line comments (`//`)
+  - Block comments (`/* */`)
+  - Doc comments (`///`, `//!`)
+  - External doc comments (`/** */`, `/*! */`)
+
 ## Requirements
 
 You must have the `codei18n` CLI tool installed and available on your system.
@@ -29,7 +38,7 @@ Ensure `codei18n` is in your system PATH.
 
 ## Usage
 
-1. Open any Go (`.go`) file.
+1. Open any Go (`.go`) or Rust (`.rs`) file.
 2. Comments will be automatically translated.
 3. Hover over a translation to view the original text.
 

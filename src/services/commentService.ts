@@ -11,8 +11,9 @@ export class CommentService {
     constructor(private cliWrapper: CliWrapper) {}
 
     public async getComments(document: vscode.TextDocument): Promise<Comment[]> {
-        if (document.languageId !== 'go') {
-            console.log(`[CodeI18n] CommentService: Skipping non-go file`);
+        const supportedLanguages = ['go', 'rust'];
+        if (!supportedLanguages.includes(document.languageId)) {
+            console.log(`[CodeI18n] CommentService: Skipping unsupported file: ${document.languageId}`);
             return [];
         }
 
@@ -22,13 +23,15 @@ export class CommentService {
             // or absolute path. Let's send what document.fileName provides.
             const output = await this.cliWrapper.scan(document.fileName, document.getText());
             
-            console.log(`[CodeI18n] CommentService: Got ${output.comments.length} comments`);
+            // 安全处理可能为null的comments数组
+            const comments = output.comments || [];
+            console.log(`[CodeI18n] CommentService: Got ${comments.length} comments`);
             // 打印有翻译的注释数量
-            const withTranslation = output.comments.filter(c => c.localizedText).length;
+            const withTranslation = comments.filter(c => c.localizedText).length;
             console.log(`[CodeI18n] CommentService: ${withTranslation} comments have localizedText`);
             
-            this.cache.set(document.uri.toString(), output.comments);
-            return output.comments;
+            this.cache.set(document.uri.toString(), comments);
+            return comments;
         } catch (error: any) {
             console.error('Failed to scan comments:', error);
             
