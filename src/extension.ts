@@ -6,6 +6,13 @@ import { Decorator } from './decoration/decorator';
 import { debounce } from './utils/debounce';
 import { TranslationHoverProvider } from './hover/translationHoverProvider';
 
+/**
+ * Activates the CodeI18n VSCode extension.
+ * Sets up comment translation services, decorators, and event listeners
+ * for supported programming languages (Go, Rust).
+ * 
+ * @param context - The extension context provided by VSCode
+ */
 export function activate(context: vscode.ExtensionContext) {
     console.log('CodeI18n active');
 
@@ -14,19 +21,29 @@ export function activate(context: vscode.ExtensionContext) {
     const commentService = new CommentService(cliWrapper);
     const decorator = new Decorator();
 
+    // Supported programming languages for comment translation
+    const supportedLanguages = ['go', 'rust'];
+
     if (!configManager.isEnabled()) {
         console.log('CodeI18n disabled via config');
         return;
     }
 
     // Core update logic
+    /**
+     * Updates comment translations for the active editor.
+     * Scans the document for comments using the CLI tool and applies
+     * decorations to display translations inline.
+     * 
+     * @param editor - The active text editor, or undefined if none
+     */
     const update = async (editor: vscode.TextEditor | undefined) => {
         if (!editor) {
             console.log('[CodeI18n] No active editor');
             return;
         }
-        if (editor.document.languageId !== 'go') {
-            console.log(`[CodeI18n] Skipping non-go file: ${editor.document.languageId}`);
+        if (!supportedLanguages.includes(editor.document.languageId)) {
+            console.log(`[CodeI18n] Skipping unsupported file: ${editor.document.languageId}`);
             return;
         }
         
@@ -65,6 +82,10 @@ export function activate(context: vscode.ExtensionContext) {
     const hoverProvider = vscode.languages.registerHoverProvider('go', new TranslationHoverProvider(commentService));
     context.subscriptions.push(hoverProvider);
 
+    // Register Rust Hover Provider
+    const rustHoverProvider = vscode.languages.registerHoverProvider('rust', new TranslationHoverProvider(commentService));
+    context.subscriptions.push(rustHoverProvider);
+
     // Commands
     const toggleCmd = vscode.commands.registerCommand('codei18n.toggle', async () => {
         // Implementation for toggle logic (update config)
@@ -77,4 +98,8 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(toggleCmd);
 }
 
+/**
+ * Deactivates the CodeI18n extension.
+ * Called when the extension is deactivated by VSCode.
+ */
 export function deactivate() {}

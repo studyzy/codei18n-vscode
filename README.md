@@ -8,6 +8,15 @@
 - **无损模式**：仅进行视觉替换；源文件内容永远不会被修改。
 - **悬停查看原文**：将鼠标悬停在已翻译的注释上即可查看原始英文文本。
 
+## Supported Languages
+
+- **Go**: Full support for line comments (`//`) and block comments (`/* */`).
+- **Rust**: v0.2.0+ support, including:
+  - Line comments (`//`)
+  - Block comments (`/* */`)
+  - Doc comments (`///`, `//!`)
+  - External doc comments (`/** */`, `/*! */`)
+
 ## 环境要求
 
 你必须在系统上安装并配置好 `codei18n` CLI 工具。
@@ -39,6 +48,9 @@ go install github.com/studyzy/codei18n/cmd/codei18n@latest
 
 ## 故障排除
 
+1. Open any Go (`.go`) or Rust (`.rs`) file.
+2. Comments will be automatically translated.
+3. Hover over a translation to view the original text.
 - **Error: codei18n process exited**: 这通常意味着 CLI 工具未找到或崩溃。请检查你的 `codei18n.cliPath` 设置。
 - **No translations**: 确保你的项目根目录下的 `codei18n` 配置（映射）已正确设置（`.codei18n/`）。
 
