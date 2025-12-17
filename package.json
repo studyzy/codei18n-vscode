@@ -33,6 +33,39 @@
           "type": "string",
           "default": "codei18n",
           "description": "Path to the codei18n executable (absolute path recommended if not in PATH)."
+        },
+        "codei18n.translation.provider": {
+          "type": "string",
+          "default": "openai",
+          "enum": [
+            "openai",
+            "deepseek",
+            "ollama"
+          ],
+          "description": "LLM Provider for translation."
+        },
+        "codei18n.translation.baseUrl": {
+          "type": "string",
+          "description": "Base URL for the LLM API."
+        },
+        "codei18n.translation.model": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "description": "Model name to use."
+        },
+        "codei18n.translation.apiKey": {
+          "type": "string",
+          "description": "API Key for the LLM Provider."
+        },
+        "codei18n.targetLanguage": {
+          "type": "string",
+          "default": "zh-CN",
+          "description": "Target language for translation (e.g. zh-CN, en)."
+        },
+        "codei18n.git.commitLanguage": {
+          "type": "string",
+          "default": "zh-CN",
+          "description": "Language for generated git commit messages."
         }
       }
     }

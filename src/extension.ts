@@ -5,6 +5,7 @@ import { CommentService } from './services/commentService';
 import { Decorator } from './decoration/decorator';
 import { debounce } from './utils/debounce';
 import { TranslationHoverProvider } from './hover/translationHoverProvider';
+import { ConfigFileService } from './services/configFileService';
 
 /**
  * Activates the CodeI18n VSCode extension.
@@ -17,6 +18,16 @@ export function activate(context: vscode.ExtensionContext) {
     console.log('CodeI18n active');
 
     const configManager = new ConfigManager();
+    const configFileService = new ConfigFileService();
+    
+    // Sync configuration to ~/.codei18n/config.json
+    configFileService.syncConfig(configManager);
+    
+    // Listen for configuration changes
+    context.subscriptions.push(configManager.onDidChangeConfiguration(() => {
+        configFileService.syncConfig(configManager);
+    }));
+
     const cliWrapper = new CliWrapper(configManager);
     const commentService = new CommentService(cliWrapper);
     const decorator = new Decorator();
