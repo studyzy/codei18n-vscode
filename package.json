@@ -11,7 +11,13 @@
   ],
   "activationEvents": [
     "onLanguage:go",
-    "onLanguage:rust"
+    "onLanguage:rust",
+    "onView:codei18n.sidebar",
+    "onCommand:codei18n.initializeProject",
+    "onCommand:codei18n.setLocalizationMode.display",
+    "onCommand:codei18n.setLocalizationMode.file",
+    "onCommand:codei18n.runFileLocalization",
+    "onCommand:codei18n.runEnglishLocalization"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -19,8 +25,45 @@
       {
         "command": "codei18n.toggleTranslation",
         "title": "CodeI18n: Toggle Translation"
+      },
+      {
+        "command": "codei18n.initializeProject",
+        "title": "CodeI18n: Initialize Project"
+      },
+      {
+        "command": "codei18n.setLocalizationMode.display",
+        "title": "CodeI18n: Use Display Localization Mode"
+      },
+      {
+        "command": "codei18n.setLocalizationMode.file",
+        "title": "CodeI18n: Use File Localization Mode"
+      },
+      {
+        "command": "codei18n.runFileLocalization",
+        "title": "CodeI18n: Run File Content Localization"
+      },
+      {
+        "command": "codei18n.runEnglishLocalization",
+        "title": "CodeI18n: Run English Localization"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codei18n",
+          "title": "CodeI18n",
+          "icon": "$(globe)"
+        }
+      ]
+    },
+    "views": {
+      "codei18n": [
+        {
+          "id": "codei18n.sidebar",
+          "name": "CodeI18n"
+        }
+      ]
+    },
     "configuration": {
       "title": "CodeI18n",
       "properties": {
@@ -66,6 +109,15 @@
           "type": "string",
           "default": "zh-CN",
           "description": "Language for generated git commit messages."
+        },
+        "codei18n.localizationMode": {
+          "type": "string",
+          "enum": [
+            "display",
+            "file"
+          ],
+          "default": "display",
+          "description": "Localization mode: display-only or file content localization."
         }
       }
     }

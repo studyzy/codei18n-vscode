@@ -7,6 +7,7 @@
 - **自动翻译**：实时将英文注释自动翻译为你的母语（例如中文）。
 - **无损模式**：仅进行视觉替换；源文件内容永远不会被修改。
 - **悬停查看原文**：将鼠标悬停在已翻译的注释上即可查看原始英文文本。
+- **CodeI18n 侧边栏**：在 VSCode 左侧活动栏中提供 CodeI18n 视图，可初始化项目、切换本地化模式，并执行“文件内容本地化”和“英文化”操作。
 
 ## Supported Languages
 
@@ -45,6 +46,11 @@ go install github.com/studyzy/codei18n/cmd/codei18n@latest
 ## 命令
 
 - `CodeI18n: Toggle Translation`: 快速启用/禁用翻译功能。
+- `CodeI18n: Initialize Project`: 通过 CLI 初始化当前工作区中的 CodeI18n 配置。
+- `CodeI18n: Use Display Localization Mode`: 切换为显示本地化模式，仅在编辑器中以装饰形式显示翻译结果。
+- `CodeI18n: Use File Localization Mode`: 切换为文件内容本地化模式，为后续批量修改源码注释做准备。
+- `CodeI18n: Run File Content Localization`: 调用 `codei18n convert` 将当前工作区中的注释批量转换为目标语言（默认 `codei18n.targetLanguage`）。
+- `CodeI18n: Run English Localization`: 调用 `codei18n convert` 将已本地化的注释尝试恢复为英文。
 
 ## 故障排除
 

@@ -43,6 +43,12 @@ export class ConfigManager {
         return config.get<string>('git.commitLanguage') || 'en';
     }
 
+    public getLocalizationMode(): 'display' | 'file' {
+        const config = vscode.workspace.getConfiguration(ConfigManager.CONFIG_SECTION);
+        const mode = config.get<string>('localizationMode') || 'display';
+        return mode === 'file' ? 'file' : 'display';
+    }
+
     public onDidChangeConfiguration(callback: (e: vscode.ConfigurationChangeEvent) => void): vscode.Disposable {
         return vscode.workspace.onDidChangeConfiguration((e) => {
             if (e.affectsConfiguration(ConfigManager.CONFIG_SECTION)) {

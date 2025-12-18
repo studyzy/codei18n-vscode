@@ -11,6 +11,7 @@ suite('CliWrapper Test Suite', () => {
 	let configManagerStub: sinon.SinonStubbedInstance<ConfigManager>;
 	let spawnStub: sinon.SinonStub;
 
+
 	setup(() => {
 		configManagerStub = sinon.createStubInstance(ConfigManager);
 		configManagerStub.getCliPath.returns('codei18n');
@@ -19,6 +20,35 @@ suite('CliWrapper Test Suite', () => {
 
 	teardown(() => {
 		sinon.restore();
+	});
+
+	test('convertDirectory resolves on successful exit code', async () => {
+		const childProcess = new EventEmitter() as any;
+		childProcess.stderr = new PassThrough();
+
+		spawnStub = sinon.stub(cp, 'spawn').returns(childProcess);
+
+		const promise = cliWrapper.convertDirectory({ toLanguage: 'zh-CN' });
+
+		childProcess.emit('close', 0);
+
+		await promise;
+	});
+
+	test('initializeProject rejects on non-zero exit code', async () => {
+		const childProcess = new EventEmitter() as any;
+		childProcess.stderr = new PassThrough();
+
+		spawnStub = sinon.stub(cp, 'spawn').returns(childProcess);
+
+		const promise = cliWrapper.initializeProject();
+
+		childProcess.stderr.write('some error');
+		childProcess.emit('close', 1);
+
+		await assert.rejects(promise, (err: any) => {
+			return typeof err.message === 'string' && err.message.includes('exited with code 1');
+		});
 	});
 
 	test('scan returns parsed output on success', async () => {
