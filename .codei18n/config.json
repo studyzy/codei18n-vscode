@@ -5,7 +5,9 @@
     ".git/**",
     "vendor/**",
     ".codei18n/**",
-    "node_modules/**"
+    "node_modules/**",
+    ".vscode-test/**",
+    "out/**"
   ],
   "translationProvider": "openai",
   "translationConfig": {

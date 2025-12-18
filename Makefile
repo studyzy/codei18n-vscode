@@ -9,9 +9,8 @@ compile:
 test:
 	npm test
 
-package:
-	npm install -g @vscode/vsce
-	vsce package
+package: install
+	npx @vscode/vsce package
 
 clean:
 	rm -rf out dist *.vsix
