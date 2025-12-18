@@ -1,0 +1,355 @@
+{
+  "version": "1.0",
+  "sourceLanguage": "en",
+  "targetLanguage": "zh-CN",
+  "comments": {
+    "02d139767bae998b8485fb4830180729f0d18800": {
+      "en": "// Scan should NOT be called",
+      "zh-CN": "// 不应调用 Scan"
+    },
+    "038f672996cfcee1b219a413d5483586f8c8fd1f": {
+      "en": "// Supported programming languages for comment translation",
+      "zh-CN": "// 支持进行注释翻译的编程语言"
+    },
+    "076bbd86a95cfe2d42b923b3afffadf31c6903ac": {
+      "en": "// Assert scan was called with new content",
+      "zh-CN": "// 断言 scan 函数被调用时传入了新的内容"
+    },
+    "0fbbab0fc93070c7bd9fdd1504111bac9c88a652": {
+      "en": "/**\n * Activates the CodeI18n VSCode extension.\n * Sets up comment translation services, decorators, and event listeners\n * for supported programming languages (Go, Rust).\n * \n * @param context - The extension context provided by VSCode\n */",
+      "zh-CN": "/**\n * 激活 CodeI18n VSCode 扩展。\n * 为支持的编程语言（Go、Rust）设置注释翻译服务、装饰器和事件监听器。\n * \n * @param context - 由 VSCode 提供的扩展上下文\n */"
+    },
+    "15d23b542d65bbd9966807a1a21214830917dcc6": {
+      "en": "// Create a decorator type that hides the original comment and displays the translation in front",
+      "zh-CN": "// 创建一个装饰类型，将原始注释隐藏并在前面显示翻译"
+    },
+    "1649a8f9d690d9a81449fe6f53bf5bd3447a4331": {
+      "en": "// and overlay the translation.",
+      "zh-CN": "// 并覆盖翻译。"
+    },
+    "184228a36b368a5c61f136ded638640b27533327": {
+      "en": "// Strategy: Make original text transparent and show translation in 'before' or 'after' attachment?",
+      "zh-CN": "// 策略：将原始文本设为透明，并在'before'或'after'附件中显示翻译？"
+    },
+    "18a16e03ff83b5ea1057e44466a3c4c1ba65a428": {
+      "en": "// Return cached comments if available on error? Or empty?",
+      "zh-CN": "// 出错时返回缓存的注释（如果可用）？还是返回空值？"
+    },
+    "1970ab2c0c7a794452474f0d1cb6ef8dd375e92b": {
+      "en": "// Line 0, Col 5 (inside comment)",
+      "zh-CN": "// 第0行，第5列（注释内部）"
+    },
+    "1aa9a74acfd75c203ecc3b8b195b26500541797e": {
+      "en": "// Create the mocha test",
+      "zh-CN": "// 创建 mocha 测试"
+    },
+    "1c46df6ccb45dde9cbdb79acd099dbfebbf37e28": {
+      "en": "// Default style can be overridden by user settings later",
+      "zh-CN": "// 默认样式稍后可由用户设置覆盖"
+    },
+    "1d2ac1e64061265e6c137e98aa6241a8620c2695": {
+      "en": "// CLI should not return comments for string content",
+      "zh-CN": "// CLI 不应返回字符串内容的注释"
+    },
+    "1d355b25076209da00788a17a5f000795a08e8fd": {
+      "en": "// Find all test files",
+      "zh-CN": "// 查找所有测试文件"
+    },
+    "1e0be0fa490c992d79bbf8f726db69284c870316": {
+      "en": "// Core update logic",
+      "zh-CN": "// 核心更新逻辑"
+    },
+    "1f4a3093f37ff0aaa57b828bde03f8bb60cc9f1d": {
+      "en": "// Only process comments that have translations",
+      "zh-CN": "// 只处理有翻译的注释"
+    },
+    "26127ef6b0214e31613216214e802f9cb9734e99": {
+      "en": "// Add files to the test suite",
+      "zh-CN": "// 将文件添加到测试套件中"
+    },
+    "29801af3120b8517dca769e152ea0a54a1b4fff2": {
+      "en": "// Implementation currently only shows original text, not translation",
+      "zh-CN": "// 当前实现仅显示原始文本，不显示翻译结果"
+    },
+    "2be7bb7bb3797c95733eb68d3f0fc49761031111": {
+      "en": "// Position on line 2 (code, not comment)",
+      "zh-CN": "// 位于第2行（代码行，非注释）"
+    },
+    "2f92eab7bf4855bafeb8386ee9d8234ae08ccbab": {
+      "en": "// Or just append translation? Spec says \"visually replace\".",
+      "zh-CN": "// 还是直接追加翻译？规范要求“视觉上替换”。"
+    },
+    "34406b9cb0540d74ba6c64dd0df139de65a06182": {
+      "en": "// Show original English comment on hover",
+      "zh-CN": "// 悬停时显示原始英文注释"
+    },
+    "37f6b0385cd21135dd03b2a5fcea919f8845e9f6": {
+      "en": "// Range is 1-based in Comment, VSCode Position is 0-based",
+      "zh-CN": "// Comment 中的范围使用 1 起始索引，VSCode Position 使用 0 起始索引"
+    },
+    "385fb1404709eaa6742b8301cf8410e341cc8341": {
+      "en": "// Decorate",
+      "zh-CN": "// 装饰处理"
+    },
+    "3a6e87b425fc574ba554fae4a23153767db73f39": {
+      "en": "// Style for the translated text (displayed after or overlaying)",
+      "zh-CN": "// 翻译文本的样式（显示在原文本之后或覆盖其上）"
+    },
+    "3c7c921825ff5dce1bcee61cda93c7e7a751c046": {
+      "en": "// Passed to --extensionTestsPath",
+      "zh-CN": "// 传递给 --extensionTestsPath"
+    },
+    "3dc3061355c9f94a2cb5b4b2f40523f48f262029": {
+      "en": "// Ensure directory exists",
+      "zh-CN": "// 确保目录存在"
+    },
+    "407578768e6c5c2666d082605d2dfe1167fee72e": {
+      "en": "// Create a mock Rust document",
+      "zh-CN": "// 创建一个模拟的 Rust 文档"
+    },
+    "40f4bf955c34af361abaf44deb05998996fefee9": {
+      "en": "// Set the letter-spacing to an extremely negative value, compressing the text until it is almost invisible",
+      "zh-CN": "// 将字母间距设为极大的负值，压缩文本到几乎不可见"
+    },
+    "4369da7d5757320f52e2152401c00473fb71a231": {
+      "en": "// If single line",
+      "zh-CN": "// 如果是单行"
+    },
+    "440f2d8e7eadd22e50256b777bdcadf1e333d265": {
+      "en": "// Safely handle the comments array that may be null",
+      "zh-CN": "// 安全处理可能为null的comments数组"
+    },
+    "477c9c8250262a2e09b02ed5efd05cc237570df2": {
+      "en": "// 2. Before/After attachment with the translation content",
+      "zh-CN": "// 2. 包含翻译内容的前后附件"
+    },
+    "48a72c0a9f451619a0605b346e464e4c39ef608b": {
+      "en": "// assert.ok(markdown.value.includes('带翻译的注释'), 'Hover should contain translation');",
+      "zh-CN": "// assert.ok(markdown.value.includes('带翻译的注释'), 'Hover should contain translation');"
+    },
+    "4d49c1eea9f0e1aec97368c061b5c61ae8e95097": {
+      "en": "// or absolute path. Let's send what document.fileName provides.",
+      "zh-CN": "// 或绝对路径。我们发送 document.fileName 提供的内容。"
+    },
+    "4f0a25738d9a3f140c70ee277a24af4a96c9d8a1": {
+      "en": "// Best way to visually replace:",
+      "zh-CN": "// 视觉替换的最佳方法："
+    },
+    "50905219c5e92da2ab6d9ec081c1509ece3e38bc": {
+      "en": "// Calculate relative path, CLI expects file paths relative to project root directory",
+      "zh-CN": "// 计算相对路径，CLI 要求文件路径相对于项目根目录"
+    },
+    "545af89d9b72acd8950262c5dc21de070671cf89": {
+      "en": "// Find if position is within any comment range",
+      "zh-CN": "// 检查位置是否位于任何注释范围内"
+    },
+    "5deb44c8d1e51b2007ff1b4d32b51cdb98286139": {
+      "en": "// Download VS Code, unzip it and run the integration test",
+      "zh-CN": "// 下载 VS Code，解压后运行集成测试"
+    },
+    "5ea906372b0a7f4347b09e36c3b8a5ed809cd4f9": {
+      "en": "// Currently, we'll stick to 'after' property for simplicity, or we can make the original text transparent",
+      "zh-CN": "// 目前，为简化起见，我们将坚持使用 'after' 属性，或者我们可以让原始文本透明"
+    },
+    "64f5faf7973505484714dbfbe3fcb51c6abcbd91": {
+      "en": "// Simulate the logic inside the update function",
+      "zh-CN": "// 模拟更新函数内部的逻辑"
+    },
+    "6591aa291a60f3f5d45eec5bbc3c421476345921": {
+      "en": "/**\n     * Updates comment translations for the active editor.\n     * Scans the document for comments using the CLI tool and applies\n     * decorations to display translations inline.\n     * \n     * @param editor - The active text editor, or undefined if none\n     */",
+      "zh-CN": "/**\n     * 更新活动编辑器的注释翻译。\n     * 使用 CLI 工具扫描文档中的注释，并应用\n     * 装饰以行内显示翻译。\n     * \n     * @param editor - 活动文本编辑器，如果没有则为 undefined\n     */"
+    },
+    "6b00d63887c3d33d1f789491a83f968da6eca4ec": {
+      "en": "// Since we can't easily import the internal 'update' function from extension.ts without exporting it,",
+      "zh-CN": "// 由于我们无法在不导出内部 'update' 函数的情况下轻松从 extension.ts 导入它，"
+    },
+    "6ce29aca844637ee28f14c601ee13866fdbab5e7": {
+      "en": "// We need to mock the debounce function to execute immediately for testing",
+      "zh-CN": "// 我们需要模拟防抖函数以便在测试中立即执行"
+    },
+    "6effbf203876ef5baea23900559c3809e4de11d0": {
+      "en": "// Passed to `--extensionDevelopmentPath`",
+      "zh-CN": "// 传递给 `--extensionDevelopmentPath`"
+    },
+    "70cc8a93937bd4c3a2439f69109c01695c826e3e": {
+      "en": "// Events",
+      "zh-CN": "// 事件"
+    },
+    "70d9bd2dad79f0a84f1127fd7dfb9e3f08573b9d": {
+      "en": "// Scan",
+      "zh-CN": "// 扫描"
+    },
+    "711058ee26ee108227bef3649ca87f0955db37ad": {
+      "en": "// Should return empty and log skipping",
+      "zh-CN": "// 应返回空值并记录跳过操作"
+    },
+    "75a9d28e549c83c4ab2355da8342b9f8c1b97f2e": {
+      "en": "// Hover Provider",
+      "zh-CN": "// 悬停提示提供器"
+    },
+    "77a2bc2f62af6c787c60577ca8ee935c54af1159": {
+      "en": "// Print the number of translated comments",
+      "zh-CN": "// 打印有翻译的注释数量"
+    },
+    "7da0fdcb530d8cc9ad0aa9b262ac0612256421c0": {
+      "en": "// Use the real decorator or a stub to verify it would update decorations",
+      "zh-CN": "// 使用真实装饰器或存根来验证其是否会更新装饰"
+    },
+    "7fff38b8bd5baebdfe4597e7bf72392a719b0484": {
+      "en": "// For now, return empty array to avoid stale state issues.",
+      "zh-CN": "// 目前返回空数组以避免状态陈旧问题。"
+    },
+    "81264cd5d061293f76580432c5cd7b0782c42e88": {
+      "en": "//",
+      "zh-CN": "//"
+    },
+    "86e7c814e728fda3488e55295da04069c239e8a4": {
+      "en": "// 1. Color: transparent",
+      "zh-CN": "// 1. 颜色：透明"
+    },
+    "86ef3875b5fbac85f69d27c189db4ba87fe01222": {
+      "en": "// So we expect sourceText (Original)",
+      "zh-CN": "// 因此我们预期 sourceText（原文）"
+    },
+    "8cf90cf0bb3664d54f951f2beaa526b5b3733f5d": {
+      "en": "// Verify MarkdownString content",
+      "zh-CN": "// 验证 MarkdownString 内容"
+    },
+    "8d439285f9a6b0fd54c5eeeec575c4c2347496d9": {
+      "en": "// Create stubbed CliWrapper",
+      "zh-CN": "// 创建模拟的 CliWrapper"
+    },
+    "8d5411fd3717c96c269fd503293a0a7ba06869ce": {
+      "en": "// Hover on Line 2",
+      "zh-CN": "// 悬停在第二行"
+    },
+    "97c22c811e2c939a671317e92a7af5c115776ad4": {
+      "en": "// Strings containing \"//\" should not be treated as comments",
+      "zh-CN": "// 包含 \"//\" 的字符串不应被当作注释处理"
+    },
+    "9aefd24aae85a1c5b9a95dc60edc90af3a89e6c3": {
+      "en": "// or just test the update logic directly.",
+      "zh-CN": "// 或者直接测试更新逻辑。"
+    },
+    "9d368938c444521452a573102218423421c59cdc": {
+      "en": "// Run the mocha test",
+      "zh-CN": "// 运行 mocha 测试"
+    },
+    "a04a1420e25aab8ec1e7785b1fbd7b2ee4c2ee3e": {
+      "en": "// Simple in-memory cache: document.uri.toString() -\u003e Comment[]",
+      "zh-CN": "// 简单的内存缓存：document.uri.toString() -\u003e Comment[]"
+    },
+    "a1ccfc3c4276bcc9f7e489f6b1ec6f026a462557": {
+      "en": "// Make the original text invisible and not take up space",
+      "zh-CN": "// 让原始文本不可见且不占空间"
+    },
+    "a3537ddf57a4a21c02175e6fffd578be058c289e": {
+      "en": "// Calculate relative path, CLI expects file paths relative to project root directory",
+      "zh-CN": "// 计算相对路径，CLI 期望相对于项目根目录的文件路径"
+    },
+    "a4c115be4d2204b46e6416b4636a0d639a065a0f": {
+      "en": "// The folder containing the Extension Manifest package.json",
+      "zh-CN": "// 包含扩展清单 package.json 的文件夹"
+    },
+    "a77dde8daf2b70ea0f7b25df69ff84f2fd2472ca": {
+      "en": "/**\n     * Clears all translation decorations from the editor.\n     * \n     * @param editor - The text editor to clear decorations from\n     */",
+      "zh-CN": "/**\n     * 清除编辑器中的所有翻译装饰。\n     * \n     * @param editor - 要清除装饰的文本编辑器\n     */"
+    },
+    "abd70f3f76dfceda46dfc645f07421154a72c070": {
+      "en": "// Style for hiding the original text (if we decide to use the 'overlay' strategy)",
+      "zh-CN": "// 隐藏原始文本的样式（如果我们决定采用“覆盖”策略）"
+    },
+    "ad7b0a32c70be1758999b7ba82d54659b61085a8": {
+      "en": "// Update with values from VSCode config",
+      "zh-CN": "// 使用 VSCode 配置中的值进行更新"
+    },
+    "ae8cdd6ec8c4fe8547a909435c4c44ae66d323f9": {
+      "en": "// Listen for configuration changes",
+      "zh-CN": "// 监听配置更改"
+    },
+    "b06de201c20c81b33bbf9f9955836141df7ee124": {
+      "en": "// Sync configuration to ~/.codei18n/config.json",
+      "zh-CN": "// 将配置同步到 ~/.codei18n/config.json"
+    },
+    "b9ca292ae618556f23461b34594c0ee8afc665ef": {
+      "en": "// Mock CLI response with a Rust line comment",
+      "zh-CN": "// 使用 Rust 行注释模拟 CLI 响应"
+    },
+    "bcdfa094ba863b2c708c6b1be6f00fc73fe25202": {
+      "en": "// Hover purpose is to show original text when user sees translation in editor",
+      "zh-CN": "// 悬停的目的是在用户在编辑器中看到翻译时显示原始文本"
+    },
+    "c5394112c32fe568e2b9c4d86572a1854bae68dd": {
+      "en": "/**\n     * Applies decorations to the editor to display translated comments.\n     * Hides the original comment text and displays the translation in its place.\n     * \n     * @param editor - The text editor to apply decorations to\n     * @param comments - List of comments with translations\n     */",
+      "zh-CN": "/**\n     * 为编辑器应用装饰以显示翻译后的注释。\n     * 隐藏原始注释文本，并在其位置显示翻译内容。\n     * \n     * @param editor - 要应用装饰的文本编辑器\n     * @param comments - 包含翻译的注释列表\n     */"
+    },
+    "ca68db455864fc7380b985291e43c9176c45945f": {
+      "en": "// Note: The line and column numbers returned by the codei18n CLI are 1-indexed, while VSCode Position is 0-indexed",
+      "zh-CN": "// 注意：codei18n CLI 返回的行列号是 1-indexed，VSCode Position 是 0-indexed"
+    },
+    "cf52aef7636c6ebb467864b92e6c681644759d89": {
+      "en": "// The path to test runner",
+      "zh-CN": "// 测试运行器的路径"
+    },
+    "d330579d8adb0771e284cea2e91097aaad0f9ea8": {
+      "en": "// Populate cache",
+      "zh-CN": "// 填充缓存"
+    },
+    "d4bc706fd3fed0581523086feb241685d412fa33": {
+      "en": "// Multi-line",
+      "zh-CN": "// 多行"
+    },
+    "d6d890b6f3f7826e589b126abda635f8b33fd411": {
+      "en": "/**\n * Deactivates the CodeI18n extension.\n * Called when the extension is deactivated by VSCode.\n */",
+      "zh-CN": "/**\n * 停用 CodeI18n 扩展。\n * 当 VSCode 停用此扩展时调用。\n */"
+    },
+    "d96023bc8f23483823ff0e9bafe62927c55a5351": {
+      "en": "// Attempt to collapse width if possible, but transparent is safer",
+      "zh-CN": "// 如果可能的话尝试折叠宽度，但透明处理更为安全"
+    },
+    "da0d9f7414a5e90969784eeeeeeccb46d41962e0": {
+      "en": "// Simulate Hover request",
+      "zh-CN": "// 模拟 Hover 请求"
+    },
+    "de0cde206120d4db58f9ec55fefc8c15145a2975": {
+      "en": "// Check lines",
+      "zh-CN": "// 检查行数"
+    },
+    "e1dfc1fc1506ef6fd130dbb1df86737f56624ee7": {
+      "en": "// Using relative path for CLI might be better if CLI expects it,",
+      "zh-CN": "// 如果 CLI 期望相对路径，使用相对路径可能更好，"
+    },
+    "e759951a476b7f2de0aaaa1069b401778dc50d46": {
+      "en": "// Register Rust Hover Provider",
+      "zh-CN": "// 注册 Rust 悬停提示提供器"
+    },
+    "f6692b5ae4231ff749ff814f4325b82a024796fc": {
+      "en": "// Execute the steps that happen during an update",
+      "zh-CN": "// 执行更新期间发生的步骤"
+    },
+    "f6aef62761317def11b76bfc4ea7fa7f27d10524": {
+      "en": "// Show original text",
+      "zh-CN": "// 显示原始文本"
+    },
+    "f6c9e38be7c4f5fa4d4b2bd6ebac54baf75e2291": {
+      "en": "// Commands",
+      "zh-CN": "// 命令"
+    },
+    "f79841b57e81b4a2172c67a487ee6fcb86c8f6e2": {
+      "en": "// Here we just verify we got the comments to pass to the decorator",
+      "zh-CN": "// 这里我们仅验证已获取要传递给装饰器的注释"
+    },
+    "f995c209d30aa086ff8a04cc31e90eb3d4a3070e": {
+      "en": "// Add translation before the original text",
+      "zh-CN": "// 在原始文本前面添加翻译"
+    },
+    "fd197d6cc8ab1bcc340002adcff1dd9970394132": {
+      "en": "// Mock cached comments (Hover provider relies on cache)",
+      "zh-CN": "// 模拟缓存的注释（悬停提示提供程序依赖缓存）"
+    },
+    "fe07fb0e4a431f4dcad12c7b5a6f76b645a6c00b": {
+      "en": "// we will test the CommentService and Decorator interaction which is what 'update' does.",
+      "zh-CN": "// 我们将测试 CommentService 与 Decorator 的交互，这正是 'update' 方法的功能。"
+    }
+  }
+}

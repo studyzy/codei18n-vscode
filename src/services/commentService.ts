@@ -23,10 +23,10 @@ export class CommentService {
             // or absolute path. Let's send what document.fileName provides.
             const output = await this.cliWrapper.scan(document.fileName, document.getText());
             
-            // 安全处理可能为null的comments数组
+            // Safely handle the comments array that may be null
             const comments = output.comments || [];
             console.log(`[CodeI18n] CommentService: Got ${comments.length} comments`);
-            // 打印有翻译的注释数量
+            // Print the number of translated comments
             const withTranslation = comments.filter(c => c.localizedText).length;
             console.log(`[CodeI18n] CommentService: ${withTranslation} comments have localizedText`);
             

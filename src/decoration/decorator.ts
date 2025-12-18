@@ -2,11 +2,11 @@ import * as vscode from 'vscode';
 import { Comment } from '../types';
 
 export class Decorator {
-    // 创建一个装饰类型，将原始注释隐藏并在前面显示翻译
+    // Create a decorator type that hides the original comment and displays the translation in front
     private translationDecorationType = vscode.window.createTextEditorDecorationType({
-        // 让原始文本不可见且不占空间
+        // Make the original text invisible and not take up space
         opacity: '0',
-        letterSpacing: '-1000px', // 将字母间距设为极大的负值，压缩文本到几乎不可见
+        letterSpacing: '-1000px', // Set the letter-spacing to an extremely negative value, compressing the text until it is almost invisible
     });
 
     /**
@@ -22,7 +22,7 @@ export class Decorator {
         const decorations: vscode.DecorationOptions[] = [];
 
         for (const comment of comments) {
-            // 只处理有翻译的注释
+            // Only process comments that have translations
             if (!comment.localizedText) {
                 console.log(`[CodeI18n] Skipping comment without localizedText: ${comment.sourceText}`);
                 continue;
@@ -30,17 +30,17 @@ export class Decorator {
 
             console.log(`[CodeI18n] Adding decoration: "${comment.sourceText}" -> "${comment.localizedText}"`);
 
-            // 注意：codei18n CLI 返回的行列号是 1-indexed，VSCode Position 是 0-indexed
+            // Note: The line and column numbers returned by the codei18n CLI are 1-indexed, while VSCode Position is 0-indexed
             const start = new vscode.Position(comment.range.startLine - 1, comment.range.startCol - 1);
             const end = new vscode.Position(comment.range.endLine - 1, comment.range.endCol - 1);
             const range = new vscode.Range(start, end);
 
             const decoration: vscode.DecorationOptions = {
                 range: range,
-                // 悬停时显示原始英文注释
+                // Show original English comment on hover
                 hoverMessage: new vscode.MarkdownString(`**原文:** ${comment.sourceText}`),
                 renderOptions: {
-                    // 在原始文本前面添加翻译
+                    // Add translation before the original text
                     before: {
                         contentText: comment.localizedText,
                         color: new vscode.ThemeColor('editorLineNumber.foreground'),

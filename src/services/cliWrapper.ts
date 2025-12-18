@@ -12,7 +12,6 @@ export class CliWrapper {
         
         const workspaceFolder = this.getWorkspaceFolder();
         // Calculate relative path, CLI expects file paths relative to project root directory
-        // 计算相对路径，CLI 期望相对于项目根目录的文件路径
         const relativePath = path.relative(workspaceFolder, filePath);
         
         const args = [
