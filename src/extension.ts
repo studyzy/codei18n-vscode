@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.window.registerTreeDataProvider('codei18n.sidebar', codeI18nViewProvider)
     );
     // Supported programming languages for comment translation
-    const supportedLanguages = ['go', 'rust'];
+    const supportedLanguages = ['go', 'rust', 'javascript', 'typescript'];
 
     if (!configManager.isEnabled()) {
         console.log('CodeI18n disabled via config');
@@ -97,6 +97,12 @@ export function activate(context: vscode.ExtensionContext) {
     // Register Rust Hover Provider
     const rustHoverProvider = vscode.languages.registerHoverProvider('rust', new TranslationHoverProvider(commentService));
     context.subscriptions.push(rustHoverProvider);
+    // Register JavaScript Hover Provider
+    const javascriptHoverProvider = vscode.languages.registerHoverProvider('javascript', new TranslationHoverProvider(commentService));
+    context.subscriptions.push(javascriptHoverProvider);
+    // Register TypeScript Hover Provider
+    const typescriptHoverProvider = vscode.languages.registerHoverProvider('typescript', new TranslationHoverProvider(commentService));
+    context.subscriptions.push(typescriptHoverProvider);
     // Commands
     const toggleCmd = vscode.commands.registerCommand('codei18n.toggle', async () => {
         const config = vscode.workspace.getConfiguration('codei18n');

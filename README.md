@@ -17,6 +17,8 @@
   - Block comments (`/* */`)
   - Doc comments (`///`, `//!`)
   - External doc comments (`/** */`, `/*! */`)
+- **JavaScript**: Full support for line comments (`//`) and block comments (`/* */`).
+- **TypeScript**: Full support for line comments (`//`) and block comments (`/* */`).
 
 ## 环境要求
 
@@ -39,7 +41,7 @@ go install github.com/studyzy/codei18n/cmd/codei18n@latest
 
 ## 使用方法
 
-1. 打开任何 Go (`.go`) 文件。
+1. 打开任何 Go (`.go`)、Rust (`.rs`)、JavaScript (`.js`) 或 TypeScript (`.ts`) 文件。
 2. 注释将被自动翻译。
 3. 将鼠标悬停在翻译后的文本上以查看原文。
 

@@ -9,9 +9,9 @@
     ".vscode-test/**",
     "out/**"
   ],
-  "translationProvider": "openai",
+  "translationProvider": "ollama",
   "translationConfig": {
-    "baseUrl": "https://api.deepseek.com",
-    "model": "deepseek-chat"
-  }
+    "model": "gemma3:4b"
+  },
+  "batchSize": 10
 }

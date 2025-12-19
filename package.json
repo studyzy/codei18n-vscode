@@ -12,6 +12,8 @@
   "activationEvents": [
     "onLanguage:go",
     "onLanguage:rust",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
     "onView:codei18n.sidebar",
     "onCommand:codei18n.initializeProject",
     "onCommand:codei18n.setLocalizationMode.display",

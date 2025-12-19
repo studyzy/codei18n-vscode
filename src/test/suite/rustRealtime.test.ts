@@ -71,13 +71,13 @@ fn main() {}`;
         assert.strictEqual(comments[0].localizedText, '更新的注释');
     });
 
-    test('Should NOT trigger scan for non-Rust file changes', async () => {
-        const jsCode = `// JS comment`;
+    test('Should NOT trigger scan for unsupported file changes', async () => {
+        const pythonCode = `# Python comment`;
         const mockDoc = {
-            languageId: 'javascript',
-            fileName: 'test.js',
-            uri: { toString: () => 'file:///test.js' },
-            getText: () => jsCode
+            languageId: 'python',
+            fileName: 'test.py',
+            uri: { toString: () => 'file:///test.py' },
+            getText: () => pythonCode
         } as vscode.TextDocument;
 
         const comments = await commentService.getComments(mockDoc);
