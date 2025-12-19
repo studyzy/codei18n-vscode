@@ -3,6 +3,7 @@
   "displayName": "CodeI18n VSCode Extension",
   "description": "VSCode extension for CodeI18n, enabling real-time translation of source code comments",
   "version": "0.2.0",
+  "publisher": "studyzy",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -14,6 +15,9 @@
     "onLanguage:rust",
     "onLanguage:javascript",
     "onLanguage:typescript",
+    "onLanguage:java",
+    "onLanguage:kotlin",
+    "onLanguage:scala",
     "onView:codei18n.sidebar",
     "onCommand:codei18n.initializeProject",
     "onCommand:codei18n.setLocalizationMode.display",

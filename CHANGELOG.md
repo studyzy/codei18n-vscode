@@ -5,6 +5,13 @@ All notable changes to the "codei18n-vscode" extension will be documented in thi
 ## [Unreleased]
 
 ### Added
+- Java, Kotlin, and Scala comment translation support.
+  - **Java**: Full support for line comments (`//`), block comments (`/* */`), and JavaDoc comments (`/** */`).
+  - **Kotlin**: Full support for line comments (`//`), block comments (`/* */`), and KDoc comments (`/** */`).
+  - **Scala**: Full support for line comments (`//`), block comments (`/* */`), and ScalaDoc comments (`/** */`).
+  - Consistent user experience with existing language support (Go, Rust, JavaScript, TypeScript).
+  - Automatic activation when opening `.java`, `.kt`, or `.scala` files.
+  - Hover provider for viewing original comments in Java/Kotlin/Scala files.
 - JavaScript and TypeScript comment translation support.
   - Full support for line comments (`//`) and block comments (`/* */`).
   - Consistent user experience with Go and Rust support.

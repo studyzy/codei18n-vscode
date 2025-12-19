@@ -11,7 +11,7 @@ export class CommentService {
     constructor(private cliWrapper: CliWrapper) {}
 
     public async getComments(document: vscode.TextDocument): Promise<Comment[]> {
-        const supportedLanguages = ['go', 'rust', 'javascript', 'typescript'];
+        const supportedLanguages = ['go', 'rust', 'javascript', 'typescript', 'java', 'kotlin', 'scala'];
         if (!supportedLanguages.includes(document.languageId)) {
             console.log(`[CodeI18n] CommentService: Skipping unsupported file: ${document.languageId}`);
             return [];

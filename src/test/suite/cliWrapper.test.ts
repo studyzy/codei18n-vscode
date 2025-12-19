@@ -1,6 +1,7 @@
 import * as assert from 'assert';
 import * as sinon from 'sinon';
 import * as cp from 'child_process';
+import * as vscode from 'vscode';
 import { CliWrapper } from '../../services/cliWrapper';
 import { ConfigManager } from '../../configuration/configManager';
 import { EventEmitter } from 'events';
@@ -10,11 +11,22 @@ suite('CliWrapper Test Suite', () => {
 	let cliWrapper: CliWrapper;
 	let configManagerStub: sinon.SinonStubbedInstance<ConfigManager>;
 	let spawnStub: sinon.SinonStub;
+	let workspaceStub: sinon.SinonStub;
 
 
 	setup(() => {
 		configManagerStub = sinon.createStubInstance(ConfigManager);
 		configManagerStub.getCliPath.returns('codei18n');
+		
+		// Mock vscode.workspace.workspaceFolders to provide a workspace folder
+		workspaceStub = sinon.stub(vscode.workspace, 'workspaceFolders').get(() => {
+			return [{
+				uri: { fsPath: '/test/workspace' },
+				name: 'test-workspace',
+				index: 0
+			}];
+		});
+		
 		cliWrapper = new CliWrapper(configManagerStub);
 	});
 
